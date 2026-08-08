@@ -23,7 +23,6 @@ interface SareeInventoryViewProps {
   onEditSaree: (saree: Saree) => void;
   onDeleteSaree: (id: string) => void;
   onUpdateStock: (id: string, newStock: number) => void;
-  onOpenCopilotWithSaree: (saree: Saree) => void;
 }
 
 export const SareeInventoryView: React.FC<SareeInventoryViewProps> = ({
@@ -33,7 +32,6 @@ export const SareeInventoryView: React.FC<SareeInventoryViewProps> = ({
   onEditSaree,
   onDeleteSaree,
   onUpdateStock,
-  onOpenCopilotWithSaree,
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFabric, setSelectedFabric] = useState<string>('all');
@@ -281,13 +279,6 @@ export const SareeInventoryView: React.FC<SareeInventoryViewProps> = ({
                       <td className="p-3.5 text-right">
                         <div className="flex items-center justify-end space-x-1">
                           <button
-                            onClick={() => onOpenCopilotWithSaree(saree)}
-                            className="p-1.5 text-amber-800 hover:bg-amber-100 rounded-lg transition-colors"
-                            title="Generate Social Caption with AI"
-                          >
-                            <Sparkles className="h-4 w-4" />
-                          </button>
-                          <button
                             onClick={() => onEditSaree(saree)}
                             className="p-1.5 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
                             title="Edit Saree"
@@ -365,15 +356,7 @@ export const SareeInventoryView: React.FC<SareeInventoryViewProps> = ({
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between pt-2">
-                    <button
-                      onClick={() => onOpenCopilotWithSaree(saree)}
-                      className="inline-flex items-center space-x-1 text-[11px] font-semibold text-amber-900 hover:underline"
-                    >
-                      <Sparkles className="h-3 w-3 text-amber-700" />
-                      <span>AI Caption</span>
-                    </button>
-
+                  <div className="flex items-center justify-end pt-2">
                     <div className="flex items-center space-x-1">
                       <button
                         onClick={() => onEditSaree(saree)}

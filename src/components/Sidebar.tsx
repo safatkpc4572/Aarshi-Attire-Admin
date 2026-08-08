@@ -8,7 +8,6 @@ import {
   Image as ImageIcon,
   Scissors,
   BarChart3,
-  Sparkles,
   Settings,
   ChevronRight,
   X,
@@ -87,13 +86,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
       icon: BarChart3,
     },
     {
-      id: 'copilot',
-      labelEn: 'Aarshi AI Studio',
-      labelBn: 'আরশি এআই স্টুডিও',
-      icon: Sparkles,
-      highlight: true,
-    },
-    {
       id: 'settings',
       labelEn: 'Store Settings',
       labelBn: 'স্টোর সেটিংস',
@@ -133,15 +125,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 className={`group relative flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-xs font-medium transition-colors ${
                   isActive
                     ? 'bg-white text-[#56181d] font-semibold shadow-sm'
-                    : item.highlight
-                    ? 'bg-[#3d1115] text-amber-200 hover:bg-[#2e0c0f] border border-[#722027]'
                     : 'text-stone-200 hover:bg-[#3d1115] hover:text-white'
                 }`}
               >
                 <div className="flex items-center space-x-2.5">
                   <Icon
                     className={`h-4 w-4 shrink-0 ${
-                      isActive ? 'text-[#56181d]' : item.highlight ? 'text-amber-300' : 'text-stone-300'
+                      isActive ? 'text-[#56181d]' : 'text-stone-300'
                     }`}
                   />
                   <span className="truncate">{lang === 'en' ? item.labelEn : item.labelBn}</span>

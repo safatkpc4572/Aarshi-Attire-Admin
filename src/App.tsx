@@ -12,7 +12,6 @@ import { CouponsView } from './components/CouponsView';
 import { BannersView } from './components/BannersView';
 import { WeaversView } from './components/WeaversView';
 import { AnalyticsView } from './components/AnalyticsView';
-import { AICopilotView } from './components/AICopilotView';
 import { SettingsView } from './components/SettingsView';
 
 import {
@@ -48,8 +47,6 @@ export default function App() {
 
   const [selectedSMSOrder, setSelectedSMSOrder] = useState<Order | null>(null);
   const [isSMSModalOpen, setIsSMSModalOpen] = useState(false);
-
-  const [copilotInitialPrompt, setCopilotInitialPrompt] = useState<string>('');
 
   // Calculate live KPIs
   const metrics: DashboardMetrics = useMemo(() => {
@@ -155,14 +152,6 @@ export default function App() {
     );
   };
 
-  // Open Copilot with initial prompt for a saree
-  const handleOpenCopilotWithSaree = (saree: Saree) => {
-    setCopilotInitialPrompt(
-      `Write an Instagram Reel caption and Facebook post for our ${saree.name} (${saree.fabric}, price ৳${saree.price}).`
-    );
-    setActiveTab('copilot');
-  };
-
   return (
     <div className="min-h-screen bg-amber-50/40 text-gray-900 font-sans flex flex-col">
       {/* Header */}
@@ -172,7 +161,6 @@ export default function App() {
         sarees={sarees}
         orders={orders}
         onNavigate={setActiveTab}
-        onOpenCopilot={() => setActiveTab('copilot')}
         onToggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       />
 
@@ -203,7 +191,6 @@ export default function App() {
                 setEditingSaree(null);
                 setIsSareeModalOpen(true);
               }}
-              onOpenCopilot={() => setActiveTab('copilot')}
               onViewOrderInvoice={(order) => {
                 setSelectedInvoiceOrder(order);
                 setIsInvoiceModalOpen(true);
@@ -225,7 +212,6 @@ export default function App() {
               }}
               onDeleteSaree={handleDeleteSaree}
               onUpdateStock={handleUpdateStock}
-              onOpenCopilotWithSaree={handleOpenCopilotWithSaree}
             />
           )}
 
@@ -283,15 +269,6 @@ export default function App() {
 
           {activeTab === 'analytics' && (
             <AnalyticsView sarees={sarees} orders={orders} lang={lang} />
-          )}
-
-          {activeTab === 'copilot' && (
-            <AICopilotView
-              sarees={sarees}
-              orders={orders}
-              lang={lang}
-              initialPrompt={copilotInitialPrompt}
-            />
           )}
 
           {activeTab === 'settings' && <SettingsView lang={lang} />}

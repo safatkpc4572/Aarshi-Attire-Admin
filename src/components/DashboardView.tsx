@@ -25,7 +25,6 @@ interface DashboardViewProps {
   lang: 'en' | 'bn';
   onNavigate: (tab: string) => void;
   onOpenAddSaree: () => void;
-  onOpenCopilot: () => void;
   onViewOrderInvoice: (order: Order) => void;
 }
 
@@ -37,7 +36,6 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   lang,
   onNavigate,
   onOpenAddSaree,
-  onOpenCopilot,
   onViewOrderInvoice,
 }) => {
   const formatBDT = (amount: number) => {
@@ -66,16 +64,15 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className="space-y-1">
             <div className="inline-flex items-center space-x-1.5 rounded-full bg-[#3d1115] px-3 py-1 text-xs font-semibold text-amber-200 border border-[#722027]">
-              <Sparkles className="h-3.5 w-3.5 text-amber-300" />
               <span>{lang === 'en' ? 'Aarshi Attire Control Center' : 'আরশি অ্যাটায়ার কন্ট্রোল সেন্টার'}</span>
             </div>
-            <h2 className="font-serif text-2xl font-bold tracking-tight text-white">
+            <h2 className="text-2xl font-bold tracking-tight text-white">
               {lang === 'en' ? 'Welcome back, Store Director!' : 'স্বাগতম, আরশি অ্যাটায়ার ড্যাশবোর্ডে'}
             </h2>
             <p className="text-xs text-rose-100/80 max-w-xl">
               {lang === 'en'
-                ? 'Manage your luxury saree inventory, track Pathao & Steadfast courier shipments, print bKash invoices, and leverage AI copy generation.'
-                : 'আপনার শাড়ির ক্যাটালগ পরিচালনা করুন, পেমেন্ট ট্র্যacking করুন, ইনভয়েস প্রিন্ট করুন এবং এআই এর সাহায্যে মার্কেটিং কন্টেন্ট তৈরি করুন।'}
+                ? 'Manage your luxury saree inventory, track Pathao & Steadfast courier shipments, and print bKash invoices.'
+                : 'আপনার শাড়ির ক্যাটালগ পরিচালনা করুন, কুরিয়ার ট্র্যাকিং ও পেমেন্ট হিসাব রাখুন, এবং প্রফেশনাল ইনভয়েস প্রিন্ট করুন।'}
             </p>
           </div>
 
@@ -86,13 +83,6 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             >
               <Plus className="h-4 w-4" />
               <span>{lang === 'en' ? 'Add New Saree' : 'নতুন শাড়ি যোগ করুন'}</span>
-            </button>
-            <button
-              onClick={onOpenCopilot}
-              className="inline-flex items-center space-x-1.5 rounded-lg bg-[#3d1115] px-4 py-2.5 text-xs font-bold text-amber-200 border border-[#722027] hover:bg-[#2e0c0f] transition-colors"
-            >
-              <Sparkles className="h-4 w-4 text-amber-300" />
-              <span>{lang === 'en' ? 'AI Caption Writer' : 'এআই ক্যাপশন রাইটার'}</span>
             </button>
           </div>
         </div>

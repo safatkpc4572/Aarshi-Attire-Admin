@@ -20,7 +20,6 @@ interface HeaderProps {
   sarees: Saree[];
   orders: Order[];
   onNavigate: (tab: string) => void;
-  onOpenCopilot: () => void;
   onToggleMobileMenu?: () => void;
 }
 
@@ -30,7 +29,6 @@ export const Header: React.FC<HeaderProps> = ({
   sarees,
   orders,
   onNavigate,
-  onOpenCopilot,
   onToggleMobileMenu,
 }) => {
   const [showNotifications, setShowNotifications] = useState(false);
